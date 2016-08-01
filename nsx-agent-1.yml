@@ -1,0 +1,44 @@
+# demo_setup.yml
+
+---
+- name: and here it begins
+  hosts: application
+  become: yes
+  become_user: root
+
+  tasks:
+  - name: create archive directory
+    file: path=/home/ubuntu/nsx-agent state=directory mode=0755
+
+  - unarchive: src=./roles/files/nsx-agent-folder.tar.gz dest=/home/ubuntu/ owner=ubuntu group=ubuntu mode=0644
+
+  - name: install nsx agent debs
+    apt: deb=/home/ubuntu/nsx-lcp-trusty_amd64/{{item}}  state=present
+    ignore_errors: yes
+    with_items:
+      - openvswitch-pki_2.5.90.4076902-1_all.deb
+      - openvswitch-switch_2.5.90.4076902-1_amd64.deb
+      - openvswitch-datapath-dkms_2.5.90.4076902-1_all.deb
+      - openvswitch-common_2.5.90.4076902-1_amd64.deb
+      - python-openvswitch_2.5.90.4076902-1_all.deb
+      - tcpdump-ovs_4.4.0.ovs2.5.90.4076902_amd64.deb
+      - nsx-transport-node-status-reporter_1.0.0.0.0.4091277_amd64.deb
+      - nsx-support-bundle-client_1.0.0.0.0.4091277_amd64.deb
+      - nsx-sfhc_1.0.0.0.0.4091277_amd64.deb
+      - nsx-netcpa_1.0.0.0.0.4091291_amd64.deb
+      - nsx-mpa_1.0.0.0.0.4091277_amd64.deb
+      - nsx-logical-exporter_1.0.0.0.0.4091277_amd64.deb
+      - nsx-lldp_1.0.0.0.0.4091277_amd64.deb
+      - nsx-host-node-status-reporter_1.0.0.0.0.4091277_amd64.deb
+      - nsx-host_1.0.0.0.0.4091283_all.deb
+      - nsx-da_1.0.0.0.0.4091277_amd64.deb
+      - nsx-cli_1.0.0.0.0.4091280_all.deb
+      - nsx-aggservice_1.0.0.0.0.4091277_all.deb
+      - nsx-agent_1.0.0.0.0.7471371_amd64.deb
+      - nsxa_1.0.0.0.0.4091277_amd64.deb
+      - nicira-ovs-hypervisor-node_2.5.90.4076902-1_all.deb
+      - libjson-spirit_4.06-nn1_amd64.deb
+      - libgoogle-glog0_0.3.1-1nn5_amd64.deb
+
+  - name: create a file
+    copy: src=./roles/files/public-cloud-config dest=/etc/vmware/nsx/public-cloud-config owner=ubuntu group=ubuntu mode=0644

@@ -1,0 +1,24 @@
+# demo_setup.yml
+
+---
+- name: and here it begins
+  hosts: application
+
+
+  tasks:
+  - unarchive: src=/home/agent/nsx-agent-folder.tar.gz dest=/home/ubuntu/nsx-agent owner=ubuntu group=ubuntu mode=0644
+
+  - name: install nsx agent debs
+    apt: deb=/home/ubuntu/nsx-agent/*deb
+    ignore_errors: yes
+
+  - name: fix apt-get install
+    command: apt-get --force-yes install -f
+
+  - name: reinstall install nsx agent debs
+    apt: deb=/home/ubuntu/nsx-agent/*deb
+    ignore_errors: yes 
+
+  - name: create a file
+    copy: src=/home/ubuntu/agentauto/roles/files/public-cloud-config dest=/etc/vmware/nsx/public-cloud-config owner=ubuntu group=ubuntu mode=0644
+
