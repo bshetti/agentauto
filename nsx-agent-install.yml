@@ -1,0 +1,16 @@
+# demo_setup.yml
+
+---
+- name: installing nsx agent for application
+  hosts: application
+  become: yes
+  become_user: root
+
+  tasks:
+  - name: Get nsx-agent from URL
+    get_url: url=http://54.149.112.14/nsx-agent-package/nsx-agent_1.0.0.0.0.7471371_amd64.deb dest=/home/ubuntu/nsx-agent_1.0.0.0.0.7471371_amd64.deb force=yes owner=ubuntu group=ubuntu mode=0755
+
+  - name: install nsx agent debs
+    apt: deb=/home/ubuntu/nsx-agent_1.0.0.0.0.7471371_amd64.deb state=present
+    ignore_errors: yes
+
