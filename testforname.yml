@@ -1,0 +1,12 @@
+# demo_setup.yml
+
+---
+- name: installing nsx agent for application
+  hosts: application
+  become: yes
+  become_user: root
+
+  tasks:
+  - name: create a file
+    copy: src=./roles/files/public-cloud-config dest=/home/ubuntu/public-cloud-config owner=ubuntu group=ubuntu mode=0755
+
