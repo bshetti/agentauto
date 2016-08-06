@@ -7,10 +7,10 @@
   become_user: root
 
   tasks:
-  - name: Get nsx-agent from URL usa.nsxagent.vmwaredownload.com
+  - name: Gettting http://usa.nsxagent.vmwaredownload.com/nsx-agent_1.1.0.0.0.7515155_amd64.deb
     get_url: url=http://54.149.112.14/nsx-agent_1.1.0.0.0.7515155_amd64.deb dest=/home/ubuntu/nsx-agent_1.1.0.0.0.7515155_amd64.deb force=yes owner=ubuntu group=ubuntu mode=0755
 
-  - name: install nsx agent debs
+  - name: install nsx agent deb
     apt: deb=/home/ubuntu/nsx-agent_1.1.0.0.0.7515155_amd64.deb state=present
     ignore_errors: yes
 

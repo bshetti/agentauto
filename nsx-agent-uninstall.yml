@@ -1,0 +1,14 @@
+# demo_setup.yml
+
+---
+- name: un-installing nsx agent for application
+  hosts: application
+  become: yes
+  become_user: root
+
+  tasks:
+  - name: un-install nsx agent debs
+    command: dpkg -r nsx-agent
+    ignore_errors: yes
+
+
