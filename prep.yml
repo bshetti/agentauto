@@ -10,8 +10,6 @@
   - name: create archive directory and download from http://agents.vmware.com
     file: path=/home/ubuntu/nsx-lcp-trusty_amd64 state=directory mode=0755
 
-  - unarchive: src=http://54.149.112.14/nsx-agent-package/nsx-agent-folder.tar.gz dest=/home/ubuntu/nsx-lcp-trusty_amd64 copy=no owner=ubuntu group=ubuntu mode=0655
-
   - name: apt-get update 
     apt: update_cache=yes
     ignore_errors: yes

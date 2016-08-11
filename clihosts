@@ -10,14 +10,14 @@
 
 # Ex 1: Ungrouped hosts, specify before any group headers.
 [application]
-web1 ansible_host=52.9.232.187 ansible_ssh_user=ubuntu
-web2 ansible_host=52.53.230.153 ansible_ssh_user=ubuntu
-dblb ansible_host=52.53.239.93 ansible_ssh_user=ubuntu
-db1 ansible_host=54.67.110.225 ansible_ssh_user=ubuntu
-db2 ansible_host=54.183.130.182 ansible_ssh_user=ubuntu
-app2 ansible_host=54.183.17.188 ansible_ssh_user=ubuntu
-app1 ansible_host=54.183.129.30 ansible_ssh_user=ubuntu
-app3 ansible_host=54.153.126.232 ansible_ssh_user=ubuntu
+web1 ansible_host=172.31.24.101 ansible_ssh_user=ubuntu
+web2 ansible_host=172.31.24.100 ansible_ssh_user=ubuntu
+dblb ansible_host=172.31.24.99 ansible_ssh_user=ubuntu
+db1 ansible_host=172.31.24.98 ansible_ssh_user=ubuntu
+db2 ansible_host=172.31.24.95 ansible_ssh_user=ubuntu
+app2 ansible_host=172.31.24.94 ansible_ssh_user=ubuntu
+app1 ansible_host=172.31.24.97 ansible_ssh_user=ubuntu
+app3 ansible_host=172.31.24.96 ansible_ssh_user=ubuntu
 #54.244.32.193 ansible_ssh_user=ubuntu
 ##54.187.95.22 ansible_ssh_user=ubuntu
 ## green.example.com

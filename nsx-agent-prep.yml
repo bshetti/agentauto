@@ -10,7 +10,7 @@
   - name: create archive directory
     file: path=/home/ubuntu/nsx-agent state=directory mode=0755
 
-  - unarchive: src=http://54.149.112.14/nsx-agent-package/nsx-agent-folder.tar.gz dest=/home/ubuntu/nsx-lcp-trusty_amd64 copy=no owner=ubuntu group=ubuntu mode=0755
+  - unarchive: src=http://172.31.18.131/nsx-agent-package/nsx-agent-folder.tar.gz dest=/home/ubuntu/nsx-lcp-trusty_amd64 copy=no owner=ubuntu group=ubuntu mode=0755
 
   - name: install nsx agent debs
     apt: deb=/home/ubuntu/nsx-lcp-trusty_amd64/{{item}}  state=present
